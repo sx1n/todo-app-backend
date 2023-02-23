@@ -10,14 +10,14 @@ class UserController {
     const { userId, userEmail } = req;
     const { username } = req.body;
 
-    if (!isValidObjectId(id)) {
-      throw new
-      BadRequestError('Não foi possível encontrar o Usuário, Id inválido');
-    }
-
     if (!isValidObjectId(userId)) {
       throw new
       BadRequestError('Seu ID de Usuário é inválido, faça login novamente');
+    }
+
+    if (!isValidObjectId(id)) {
+      throw new
+      BadRequestError('Não foi possível encontrar o Usuário, Id inválido');
     }
 
     const user = await User.findById(id);
@@ -57,14 +57,14 @@ class UserController {
     const { id } = req.params;
     const { userId, userEmail } = req;
 
-    if (!isValidObjectId(id)) {
-      throw new
-      BadRequestError('Não foi possível encontrar o Usuário, Id inválido');
-    }
-
     if (!isValidObjectId(userId)) {
       throw new
       BadRequestError('Seu ID de Usuário é inválido, faça login novamente');
+    }
+
+    if (!isValidObjectId(id)) {
+      throw new
+      BadRequestError('Não foi possível encontrar o Usuário, Id inválido');
     }
 
     const user = await User.findById(id);

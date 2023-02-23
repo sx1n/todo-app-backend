@@ -66,13 +66,9 @@ class AuthController {
   async auth(req, res) {
     const { email, password } = req.body;
 
-    if (!isEmail(email)) {
-      throw new BadRequestError('E-mail ou senha inválidos');
-    }
-
     const invalidPassword = password.length < 8 || password.length > 125;
 
-    if (invalidPassword) {
+    if (!isEmail(email) || invalidPassword) {
       throw new BadRequestError('E-mail ou senha inválidos');
     }
 
@@ -82,13 +78,11 @@ class AuthController {
       throw new BadRequestError('E-mail ou senha inválidos');
     }
 
-
     const match = await bcrypt.compare(password, user.password);
 
     if (!match) {
       throw new BadRequestError('E-mail ou senha inválidos');
     }
-
 
     user.password = undefined;
 
