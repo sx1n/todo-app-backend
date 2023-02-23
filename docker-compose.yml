@@ -12,8 +12,6 @@ services:
       - .env
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
-    volumes:
-      - .:/home/node/app
     depends_on:
       - db
     logging:
